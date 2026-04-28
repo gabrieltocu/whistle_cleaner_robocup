@@ -4,6 +4,7 @@
 venv/
 env/
 ENV/
+.gitignore
 
 # ── Dataset de audios (archivos pesados, no van en el repo) ─
 dataWhistles/
