@@ -1,0 +1,24 @@
+# NAO Audio Cleaner — RoboCup HSL
+# Python >= 3.10 required
+#
+# Install:
+#   pip install -r requirements.txt
+
+# ── Web UI ────────────────────────────────────────────────────────────────────
+gradio>=4.44.0
+
+# ── Audio processing ──────────────────────────────────────────────────────────
+librosa>=0.10.2
+soundfile>=0.12.1
+noisereduce>=3.0.2
+
+# ── Scientific computing ──────────────────────────────────────────────────────
+numpy>=1.26.0
+scipy>=1.11.0
+
+# ── Data / display ────────────────────────────────────────────────────────────
+pandas>=2.1.0
+
+# ── CLI tool (whistle_detector.py) ────────────────────────────────────────────
+tqdm>=4.66.0
+matplotlib>=3.8.0
