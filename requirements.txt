@@ -4,8 +4,10 @@
 # Install:
 #   pip install -r requirements.txt
 
-# ── Web UI ────────────────────────────────────────────────────────────────────
-gradio>=4.44.0
+# ── REST API Backend ────────────────────────────────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
 
 # ── Audio processing ──────────────────────────────────────────────────────────
 librosa>=0.10.2

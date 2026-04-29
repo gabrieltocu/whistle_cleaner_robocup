@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAO Pro Audio Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mesh-bg"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <main class="dashboard">
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="icon-robot">🤖</div>
+                <div class="brand">
+                    <h1>NAO Studio</h1>
+                    <p>RoboCup HSL · Audio Cleaning & Analytics</p>
+                </div>
+            </div>
+            <div class="header-status">
+                <span class="pulse-dot"></span> API En Línea
+            </div>
+        </header>
+
+        <div class="grid-content">
+            <!-- Sidebar: Controles -->
+            <aside class="sidebar">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h2><span class="em">📂</span> Ingresar Audios</h2>
+                    </div>
+                    <div class="drop-zone" id="dropzone">
+                        <div class="drop-icon">📤</div>
+                        <h3>Arrastra tus archivos aquí</h3>
+                        <p>O haz clic para explorar</p>
+                        <span class="file-hints">Soporta WAV, MP3, OGG, FLAC</span>
+                        <input type="file" id="fileInput" multiple accept=".wav,.mp3,.ogg,.flac">
+                    </div>
+                    
+                    <div class="file-stack" id="fileList"></div>
+                </div>
+
+                <div class="glass-card mt-4">
+                    <div class="card-header">
+                        <h2><span class="em">⚙️</span> Configuración del Motor</h2>
+                    </div>
+                    <div class="settings-group">
+                        <div class="setting-item">
+                            <div class="setting-label">
+                                <span>Reducción de Ruido</span>
+                                <span class="badge-value" id="noiseVal">0.75</span>
+                            </div>
+                            <input type="range" id="noiseStrength" class="slider" min="0" max="1" step="0.05" value="0.75">
+                        </div>
+                        
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="applyBp" checked>
+                            <div class="toggle-bg"></div>
+                            <span class="toggle-label">Filtro Paso-Banda (100Hz - 10kHz)</span>
+                        </label>
+                        
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="doNormalize" checked>
+                            <div class="toggle-bg"></div>
+                            <span class="toggle-label">Normalización Máxima</span>
+                        </label>
+                    </div>
+
+                    <button class="btn-glow" id="analyzeBtn" disabled>
+                        <span class="btn-text">INICIAR ANÁLISIS</span>
+                        <span class="btn-icon">⚡</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Panel: Resultados -->
+            <section class="main-panel">
+                <!-- Zona de Stats adaptativos -->
+                <div class="glass-card hidden slide-in" id="statsContainer" style="margin-bottom: 24px;">
+                    <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 16px; margin-bottom: 16px;">
+                        <h2><span class="em">🧠</span> Inteligencia Adaptativa de Umbrales</h2>
+                    </div>
+                    <div class="stats-grid" id="statsBoxes">
+                        <!-- Stat items generados por JS -->
+                    </div>
+                    <div class="stats-actions">
+                        <button class="btn-outline-danger" id="resetBtn" onclick="resetFeedback()">🗑️ Resetear Entrenamiento</button>
+                    </div>
+                </div>
+
+                <!-- Lista de Resultados -->
+                <div class="glass-card results-wrapper">
+                    <div class="card-header sticky-header">
+                        <h2><span class="em">✨</span> Audios Limpios y Clasificados</h2>
+                    </div>
+                    
+                    <div id="loader" class="cyber-loader hidden">
+                        <div class="spinner"></div>
+                        <p>Procesando Señales...</p>
+                    </div>
+
+                    <div class="results-list" id="resultsGrid">
+                        <div class="empty-state">
+                            <div class="empty-icon">🎧</div>
+                            <p>Esperando audios para analizar</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

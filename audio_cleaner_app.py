@@ -357,7 +357,7 @@ def stats_html():
     </div>
   </div>
 
-  {f'<div style="font-size:0.72rem;color:#00e5ff;margin-bottom:4px">F1 (feedback): <span style=\\"font-family:Space Mono,monospace\\">{f1s}</span></div>' if f1s != "—" else ""}
+  {f'<div style="font-size:0.72rem;color:#00e5ff;margin-bottom:4px">F1 (feedback): <span style="font-family:Space Mono,monospace">{f1s}</span></div>' if f1s != "—" else ""}
   {f'<div style="font-size:0.72rem;color:#ff8f00;margin-bottom:6px">FN: {nfn} &nbsp;·&nbsp; FP: {nfp}</div>' if nc > 0 else ""}
 
   <div style="font-size:0.72rem;color:#4a6070;margin-bottom:5px">Umbrales activos:</div>
